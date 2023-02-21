@@ -1,4 +1,4 @@
-# Minesweeper - AI Solver
+# Minesweeper - AI Bot Solver
 
 This is a bot written in Python, Processing and Mace4 that is capable of solving Minesweeper game board.
 The bot uses logical deduction and constraint satisfaction techniques to determine the locations of mines on the board.
