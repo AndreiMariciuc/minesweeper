@@ -1,0 +1,21 @@
+set(arithmetic).
+assign(max_models, -1).
+assign(domain_size, 5).
+
+% Mariciuc Andrei-Alexandru
+formulas(rules_battleship).
+% WAVE = 0, SHIP = 1
+ship_world(x, y) = 0 | battle_world(x, y) = 1.
+
+dim = 5.
+
+s(x) = x mod dim.
+p(x) = y mod dim.
+
+ship_world(x, y) = 1
+
+end_of_list.
+
+formulas(map_battleship).
+
+end_of_list.

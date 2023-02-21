@@ -1,0 +1,36 @@
+set(arithmetic).
+assign(max_models, -1).
+assign(domain_size, 4).
+
+% distinct(list).
+% [bucovina, moldova, dobrogea, muntenia, oltenia, translavania,
+% banat, crisana, maramures].
+% end_of_list.
+
+formulas(csp_rules).
+all x all y (connected(x, y) <-> connected(y, x)).
+
+all x all y (abs(x + (-y)) = 0 -> -connected(x, y)).
+end_of_list.
+
+formulas(csp_map).
+
+connected(transilvania, bucovina).
+connected(transilvania, moldova).
+connected(transilvania, muntenia).
+connected(transilvania, oltenia).
+connected(transilvania, banat).
+connected(transilvania, crisana).
+connected(transilvania, maramures).
+
+connected(bucovina, moldova).
+connected(moldova, dobrogea).
+connected(moldova, muntenia).
+connected(muntenia, dobrogea).
+connected(muntenia, oltenia).
+connected(oltenia, banat).
+connected(banat, crisana).
+connected(crisana, maramures).
+connected(maramures, bucovina).
+
+end_of_list.

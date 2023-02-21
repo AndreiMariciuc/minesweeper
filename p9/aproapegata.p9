@@ -1,0 +1,63 @@
+set(production).
+% set(prolog_style_variables).
+
+formulas(demodulators).
+n = 3.
+end_of_list.
+
+formulas(usable).
+%a doua cu numere 
+J(x, y, c) & x > 1 & y < (n + -1) & J(x + -2, y + 1, 0) & c!= 0 -> J(x + -2, y + 1, 0) J(x + -2, y + 1, c) & J(x, y, 0) #answer("sus_dreapta").
+J(x, y, c) & x > 1 & y > 0 & J(x + -2, y + -1, 0) & c != 0 -> J(x + -2, y + -1, c) & J(x, y, 0) #answer("sus_stanga").
+J(x, y, c) & x > 0 & y > 1 & J(x + -1, y + -2, 0) & c != 0 -> J(x + -1, y + -2, c) & J(x, y, 0) #answer("stanga_sus").
+J(x, y, c) & x < (n + -1) & y > 1 & J(x + 1, y + -2, 0) & c != 0 -> J(x + 1, y + -2, c) & J(x, y, 0) #answer("stanga_jos").
+J(x, y, c) & x > 0 & y < (n + -2) & J(x + -1, y + 2, 0) & c != 0 -> J(x + -1, y + 2, c) & J(x, y, 0)  #answer("dreapta_sus").
+J(x, y, c) & x < (n + -1) & y < (n + -2) & J(x + 1, y + 2, 0) & c != 0  -> J(x + 1, y + 2, c) & J(x, y, 0) #answer("dreapta_jos").
+J(x, y, c) & x < (n + -2) & y > 0 & J(x + 2, y + -1, 0) & c != 0 -> J(x + 2, y + -1, c) & J(x, y, 0) #answer("jos_stanga").
+J(x, y, c) & x < (n + -2) & y < (n + -1) & J(x + 2, y + 1, 0) & c != 0 -> J(x + 2, y + 1, c) & J(x, y, 0) #answer("jos_dreapta").
+
+% J(x, y, c) & x > 1 & y < (n + -1) & J(x + -2, y + 1, 0) & c!= 0 -> J(x + -2, y + 1, c) #answer("sus_dreapta").
+% J(x, y, c) & x > 1 & y > 0 & J(x + -2, y + -1, 0) & c != 0 -> J(x + -2, y + -1, c) #answer("sus_stanga").
+% J(x, y, c) & x > 0 & y > 1 & J(x + -1, y + -2, 0) & c != 0 -> J(x + -1, y + -2, c) #answer("stanga_sus").
+% J(x, y, c) & x < (n + -1) & y > 1 & J(x + 1, y + -2, 0) & c != 0 -> J(x + 1, y + -2, c) #answer("stanga_jos").
+% J(x, y, c) & x > 0 & y < (n + -2) & J(x + -1, y + 2, 0) & c != 0 -> J(x + -1, y + 2, c) #answer("dreapta_sus").
+% J(x, y, c) & x < (n + -1) & y < (n + -2) & J(x + 1, y + 2, 0) & c != 0  -> J(x + 1, y + 2, c)#answer("dreapta_jos").
+% J(x, y, c) & x < (n + -2) & y > 0 & J(x + 2, y + -1, 0) & c != 0 -> J(x + 2, y + -1, c)#answer("jos_stanga").
+% J(x, y, c) & x < (n + -2) & y < (n + -1) & J(x + 2, y + 1, 0) & c != 0 -> J(x + 2, y + 1, c) #answer("jos_dreapta").
+
+end_of_list.
+
+formulas(assumptions).
+% nimic | negru | alb
+% J(x, y, 0) | J(x, y, 1) | J(x, y, 2).
+
+% J(0, 0, 1) & J(0, 1, 1) & J(0, 2, 1) & J(0, 3, 1) & 
+% J(1, 0, 1) & J(1, 1, 1) & J(1, 2, 0) & J(1, 3, 1) & 
+% J(2, 0, 2) & J(2, 1, 0) & J(2, 2, 2) & J(2, 3, 2) &
+% J(3, 0, 2) & J(3, 1, 2) & J(3, 2, 2) & J(3, 3, 2).
+
+% J(0, 0, 1) & J(0, 1, 0) & J(0, 2, 1) &
+% J(1, 0, 0) & J(1, 1, 0) & J(1, 2, 0) &
+% J(2, 0, 2) & J(2, 1, 0) & J(2, 2, 2).
+
+% J(0, 0, 1).
+J(0, 0, 1) & J(0, 1, 0) & J(0, 2, 0) &
+J(1, 0, 0) & J(1, 1, 0) & J(1, 2, 0) &
+J(2, 0, 0) & J(2, 1, 0) & J(2, 2, 2).
+end_of_list.
+
+
+formulas(goals).
+% J(0, 0, 2) & J(0, 1, 2) & J(0, 2, 2) & J(0, 3, 2) & 
+% J(1, 0, 2) & J(1, 1, 2) & J(1, 2, 0) & J(1, 3, 2) & 
+% J(2, 0, 1) & J(2, 1, 0) & J(2, 2, 1) & J(2, 3, 1) &
+% J(3, 0, 1) & J(3, 1, 1) & J(3, 2, 1) & J(3, 3, 1). 
+
+% J(0, 0, 2) & J(0, 1, 0) & J(0, 2, 2) & 
+% J(1, 0, 0) & J(1, 1, 0) & J(1, 2, 0) &
+% J(2, 0, 1) & J(2, 1, 0) & J(2, 2, 1).
+
+J(0, 0, 0) & J(0, 1, 2) & J(0, 2, 0) &
+J(1, 0, 0) & J(1, 1, 0) & J(1, 2, 0) &
+J(2, 0, 0) & J(2, 1, 1) & J(2, 2, 0).
+end_of_list.

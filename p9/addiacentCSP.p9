@@ -1,0 +1,40 @@
+set(arithmetic).
+assign(max_models, -1).
+assign(domain_size, 9).
+
+list(distinct).
+[0, a, b, c, d, e, f, g, h].
+end_of_list.
+
+formulas(rules_CSP).
+all x all y (connected(x, y) <-> connected(y, x)).
+
+all x all y (abs(x + (-y)) = 1 -> -connected(x, y)).
+end_of_list.
+
+formulas(map_CSP).
+connected(a, b).
+connected(a, c).
+connected(a, d).
+
+connected(b, c).
+connected(b, e).
+connected(b, f).
+
+connected(c, e).
+connected(c, f).
+connected(c, g).
+connected(c, d).
+
+
+connected(d, f).
+connected(d, g).
+
+connected(e, f).
+connected(e, h).
+
+connected(f, g).
+connected(f, h).
+
+connected(g, h).
+end_of_list.

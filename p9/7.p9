@@ -1,0 +1,41 @@
+set(arithmetic).
+assign(max_models, -1).
+assign(domain_size, 11).
+
+formulas(utils).
+% isQueen(2) = 1.
+% all x (x!=3 -> isQueen(x) = 0).
+
+% isPawn(1) = 1.
+% all x (x!=2 -> isPawn(x) = 0).
+
+% all x (sumQueenLinie(x) = isQueen(tabla(x, 0)) + isQueen(tabla(x, 1)) + isQueen(tabla(x, 2)) + isQueen(tabla(x, 3)) + isQueen(tabla(x, 4)) + isQueen(tabla(x, 5))
+%                      + isQueen(tabla(x, 6)) + isQueen(tabla(x, 7))).
+
+% all x (sumPawnLinie(x) = isPawn(tabla(x, 0)) + isPawn(tabla(x, 1)) + isPawn(tabla(x, 2)) + isPawn(tabla(x, 3)) + isPawn(tabla(x, 4)) + isPawn(tabla(x, 5))
+%                      + isPawn(tabla(x, 6)) + isPawn(tabla(x, 7))).
+end_of_list.
+
+formulas(CSP_QUEENS_PAWNS).
+% nimic, pawn, queen
+tabla(x, y) = 0 | tabla(x, y) = 1 | tabla(x, y) = 2.
+
+% % exista fix 10 regine pe tabla.
+% (sumQueenLinie(0) + sumQueenLinie(1) + sumQueenLinie(2) + sumQueenLinie(3) + sumQueenLinie(4) + sumQueenLinie(5) + sumQueenLinie(6) + sumQueenLinie(7)) = 10.
+
+% % exista fix 2 pioni pe tabla.
+% (sumPawnLinie(0) + sumPawnLinie(1) + sumPawnLinie(2) + sumPawnLinie(3) + sumPawnLinie(4) + sumPawnLinie(5) + sumPawnLinie(6) + sumPawnLinie(7)) = 2.
+
+% nuExistaPion(cx1, cy1, cx2, cy2) -> all u all v (u>=cx1 & v>=cy1 & u<=cx2 & v<=cy2 -> tabla(u, v) != 1).
+
+% % nu trebuie sa se atace pe coloana
+% all x1 all y1 all x2 all y2 ((isQueen(tabla(x1, y1)) = 1) & (isQueen(tabla(x2, y2)) = 1) & (abs(x1 + -x2) = abs(y1 + -y2)) & nuExistaPion(x1, y1, x2, y2) -> x1 = x2 & y1 = y2).
+
+% %avem doar o regina pe linie
+% all x all y1 all y2 (Q(x, y1) & Q(x, y2) & nuExistaPion(x, y1, x, y2) -> y1 = y2).
+
+% %avem doar o regina per coloana
+% all x1 all x2 all y (Q(x1, y) & Q(x2, y) & nuExistaPion(x1, y, x2, y) -> x1 = x2).
+
+end_of_list.
+

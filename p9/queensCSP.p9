@@ -1,0 +1,28 @@
+set(arithmetic).
+assign(max_models, -1).
+assign(domain_size, 8).
+
+formulas(constangeri).
+%avem doar o regina pe diagonala principala
+% Q(x1, y1) & Q(x2, y2) &  ((x1 + -x2) = (y1 + -y2)) -> x1 = x2 & y1 = y2.
+% Q(x1, y1) & Q(x2, y2) &  ((x2 + -x1) = (y2 + -y1)) -> x2 = x1 & y1 = y2.
+
+all x1 all y1 all x2 all y2 (Q(x1, y1) & Q(x2, y2) &  (abs(x1 + -x2) = abs(y1 + -y2)) -> x1 = x2 & y1 = y2).
+
+%avem doar o regina pe linie
+all x all y1 all y2 (Q(x, y1) & Q(x, y2) -> y1 = y2).
+
+%avem doar o regina per coloana
+all x1 all x2 all y (Q(x1, y) & Q(x2, y) -> x1 = x2).
+
+%avem cel putin o regina pe fiecare linie
+all x exists y Q(x, y).
+
+% -(exists x exists y (Q(x, y) & (x = y))).
+% sau
+all x all y (Q(x, y) -> x != y).
+% Q(x, y) -> x != y.
+% Q(x, y) -> x != domain_size + -y + -1.
+% Q(6, 0).
+
+end_of_list.

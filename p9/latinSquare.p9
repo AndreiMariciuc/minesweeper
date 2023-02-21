@@ -1,0 +1,20 @@
+set(arithmetic).
+assign(max_models, -1).
+assign(domain_size, 5).
+
+
+formulas(rules_of_latinsquare).
+% map(x, y) = 0 | map(x, y) = 1 | map(x, y) = 2.
+
+all x all y1 all y2 (map(x, y1) = map(x, y2) -> y1 = y2).
+all y all x1 all x2 (map(x1, y) = map(x2, y) -> x1 = x2).
+
+% normalized latin square
+all y (map(0, y) = y).
+all x (map(x, 0) = x).
+
+% map(0, 0) = 0. map(0, 1) = 1. map(0, 2) = 2. map(0, 3) = 3.
+%                map(1, 0) = 1. map(2, 0) = 2. map(3, 0) = 3.
+
+
+end_of_list.
